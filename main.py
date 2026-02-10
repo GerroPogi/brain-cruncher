@@ -1,37 +1,17 @@
-import customtkinter
 
-dark_theme = customtkinter.Theme(
-    primary_color="#262626",
-    secondary_color="#3B3B3B",
-    accent_color="#D75A4A",
-    background_color="#1E1E1E",
-    text_color="#FFFFFF",
-    font=("Helvetica", 12),
-    geometry="700x345",
-    title="Brain Cruncher"
-)
+from flask import Flask, render_template
+from random import randint
 
-main = customtkinter.Window(dark_theme)
+app = Flask(__name__)
 
-start_button = customtkinter.Button(
-    master=main,
-    text="Start",
-    command=lambda: print("Start Button Clicked")
-)
-start_button.pack(pady=10)
+@app.route('/')
+def home():
+    return render_template('home.html')
 
-quit_button = customtkinter.Button(
-    master=main,
-    text="Quit",
-    command=lambda: main.destroy()
-)
-quit_button.pack(pady=10)
+@app.route("/start")
+def start():
+    num = randint(1, 100)
+    return render_template('start.html', num=num)
 
-settings_button = customtkinter.Button(
-    master=main,
-    text="Settings",
-    command=lambda: print("Settings Button Clicked")
-)
-settings_button.pack(pady=10)
-
-main.mainloop()
+if __name__ == '__main__':
+    app.run(debug=True)

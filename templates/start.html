@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Playing Brain Cruncher</title>
+        <meta name="description" content="Playing the Brain Cruncher game.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/start.css') }}">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <p>Playing Braincruncher</p>
+        <br>
+        <section id="question-section">
+            <p style="display:inline" id="question">Number: <span style="font-weight: bold">{{ num }}</span></p>
+        </section>
+        <div id="start-button">
+            <button id="start-btn">Start</button>
+        </div>
+        <section id="answer-section">
+            <textarea id="answer" rows="4" cols="50"></textarea>
+        </section>
+        
+        <script src="{{ url_for('static', filename='js/start.js') }}"></script>
+        <script>
+            
+            document.getElementById("start-btn").addEventListener("click", async function() {
+                await button_func();
+            });
+        </script>
+
+    </body>
+</html>
